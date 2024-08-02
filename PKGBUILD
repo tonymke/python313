@@ -2,7 +2,7 @@
 # Based off python313 PKGBUILD by Tobias Kunze <r@rixx.de>
 
 pkgname=python313-freethreaded
-pkgver=3.13.0b4
+pkgver=3.13.0rc1
 pkgrel=1
 _pyver=3.13.0
 _pybasever=3.13
@@ -20,8 +20,12 @@ options=(!emptydirs)
 source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.asc}
 )
+md5sums=(
+  '9213ecfedc510ac2a14c0eeea96baf02'
+  'SKIP'
+)
 sha256sums=(
-  'b2aa557c3c875233abdaf1b124284e5d50f6bb238d62a8b55f12dc92cea1953f'
+  '678b884775eec0224d5159fa900879020baca2a36ce942fd95febfa1adb4a6bd'
   'SKIP'
 )
 validpgpkeys=(
