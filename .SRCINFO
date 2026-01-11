@@ -1,7 +1,7 @@
-pkgbase = python313-freethreaded
-	pkgdesc = Major release 3.13 of the Python high-level programming language (freethreading version without GIL)
+pkgbase = python313
+	pkgdesc = Major release 3.13 of the Python high-level programming language
 	pkgver = 3.13.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = x86_64
 	license = PSF-2.0
@@ -31,4 +31,4 @@ pkgbase = python313-freethreaded
 	sha256sums = 16ede7bb7cdbfa895d11b0642fa0e523f291e6487194d53cf6d3b338c3a17ea2
 	sha256sums = SKIP
 
-pkgname = python313-freethreaded
+pkgname = python313

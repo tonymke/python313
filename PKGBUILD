@@ -1,13 +1,14 @@
-# Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
-# Based off python313 PKGBUILD by Tobias Kunze <r@rixx.de>
+# Maintainer: Tony Lechner <tony@tony-lechner.com>
+# Based off of python313-freethreaded by Blair Bonnett <blair.bonnett@gmail.com>
+# Which was itself based off python313 PKGBUILD by Tobias Kunze <r@rixx.de> (no longer on AUR)
 
-pkgname=python313-freethreaded
+pkgname=python313
 pkgver=3.13.11
-pkgrel=1
+pkgrel=2
 _pyver=3.13.11
 _pybasever=3.13
 _pymajver=3
-pkgdesc="Major release 3.13 of the Python high-level programming language (freethreading version without GIL)"
+pkgdesc="Major release 3.13 of the Python high-level programming language"
 arch=('x86_64')
 license=('PSF-2.0')
 url="https://www.python.org/"
@@ -72,7 +73,6 @@ build() {
               --enable-shared \
               --with-computed-gotos \
               --with-lto \
-              --disable-gil \
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
@@ -95,14 +95,11 @@ package() {
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
 
-  # Avoid conflicts with the python313 package.
-  mv "${pkgdir}/usr/bin/idle${_pybasever}" "${pkgdir}/usr/bin/idle${_pybasever}t"
-  mv "${pkgdir}/usr/bin/pydoc${_pybasever}" "${pkgdir}/usr/bin/pydoc${_pybasever}t"
-  rm "${pkgdir}/usr/bin/python${_pybasever}"
+  # No man pages for altinstalls
   rm -r "${pkgdir}/usr/share/man"
 
   # Clean-up reference to build directory
-  sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}t/config-${_pybasever}t-${CARCH}-linux-gnu/Makefile"
+  sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}-${CARCH}-linux-gnu/Makefile"
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
